@@ -135,10 +135,7 @@ class Quantity(np.ndarray):
     @property
     def _reference(self):
         """The reference quantity used to perform conversions"""
-        rq = 1*unit_registry['dimensionless']
-        for u, d in self.dimensionality.items():
-            rq = rq * u._reference**d
-        return rq * self.magnitude
+        return self.simplified
 
     @property
     def magnitude(self):
